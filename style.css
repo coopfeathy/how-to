@@ -13,49 +13,44 @@ p, h1, h2, h3, h4, h5, h6, li{
 }
 
 a{
-    text-decoration: none;
+  text-decoration: none;
 }
 
 hr{
-    margin: 0;
+  margin: 0;
 }
 
 img {
-    display: block;
-      border: 0;
-      width: 100%;
-      height: auto;
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto;
 }
 .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* see notes below */
-    grid-auto-rows: minmax(200px, auto);
-    grid-gap: 1rem;
-    padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* see notes below */
+  grid-auto-rows: minmax(200px, auto);
+  grid-gap: 1rem;
+  padding: 10px;
 }
   
 .card {
-    /*height: 200px;*/
-    /*background: red;*/
     border: 2px solid #e7e7e7;
     border-radius: 4px;
     padding: 7px;
     display: flex;
-    /* -webkit-box-orient: vertical; */
-    /* -webkit-box-direction: normal; */
     -ms-flex-direction: column;
     flex-direction: column;
     position: relative;
-} /* li item */
-  
-  
+}
+
 /* Mobile */
 @media only screen and (max-width: 600px){
     .noMobile{
       display: none !important;
     }
 }
-  
+
 /* Desktop */
 @media only screen and (min-width: 601px){
     .noDesktop{
