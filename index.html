@@ -10,10 +10,21 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <center><hr><h1>HOW TO</h1><hr></center>
-        <h1><a href="https://coopfeathy.github.io/site/" title="Back">Back</a></h1>
-        <section class="cards">
-            <article class="card">
+        <center>
+            <hr><h1>HOW TO</h1><hr>
+            <br>
+            <input type="text" id="Search" onkeyup="myFunction()" placeholder="Please enter a search term.." title="Type in a name">
+            <br><br>
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                <button class="btn" onclick="filterSelection('food')"> Food</button>
+                <button class="btn" onclick="filterSelection('home')"> Home</button>
+                <button class="btn" onclick="filterSelection('crafts')"> Crafts</button>
+            </div>
+        </center>
+
+        <section class="cards container">
+            <article class="card filterDiv food">
                 <center>
                     <img src="pictures/scrabledegg.jpeg" alt="Scrambled Eggs" />
                     <h2>Scrambled Eggs</h2>
@@ -21,6 +32,83 @@
                     <a href="things/scrambledEggs.html"><h2>Learn</h2></a>
                 </center>
             </article>
+            <article class="card filterDiv home">
+                <center>
+                    <img src="pictures/scrabledegg.jpeg" alt="Scrambled Eggs" />
+                    <h2>Scrambled Eggs 123</h2>
+                    <hr><p>Learn how to make scrambled eggs.</p><hr>
+                    <a href="things/scrambledEggs.html"><h2>Learn</h2></a>
+                </center>
+            </article>
+            <article class="card filterDiv crafts">
+                <center>
+                    <img src="pictures/scrabledegg.jpeg" alt="Scrambled Eggs" />
+                    <h2>test Eggs</h2>
+                    <hr><p>Learn how to make scrambled eggs.</p><hr>
+                    <a href="things/scrambledEggs.html"><h2>Learn</h2></a>
+                </center>
+            </article>
         </section>
+
+
+        <script>
+            filterSelection("all")
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("filterDiv");
+                if (c == "all") c = "";
+                for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                }
+            }
+            
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+                }
+            }
+            
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                }
+                }
+                element.className = arr1.join(" ");
+            }
+            
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function(){
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                });
+            }
+        </script>
+        <script>
+            function myFunction() {
+            var input = document.getElementById("Search");
+            var filter = input.value.toLowerCase();
+            var nodes = document.getElementsByClassName('card');
+
+            for (i = 0; i < nodes.length; i++) {
+                if (nodes[i].innerText.toLowerCase().includes(filter)) {
+                nodes[i].style.display = "block";
+                } else {
+                nodes[i].style.display = "none";
+                }
+            }
+            }
+        </script>
     </body>
 </html>
