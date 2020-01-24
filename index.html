@@ -13,7 +13,9 @@
         <center>
             <hr><h1>HOW TO</h1><hr>
             <br>
-            <input type="text" id="Search" onkeyup="myFunction()" placeholder="Please enter a search term.." title="Type in a name">
+            <input type="text" id="Search"  placeholder="Please enter a search term.." title="Type in a name">
+            <button onclick="myFunction()"> search</button>
+
             <br><br>
             <div id="myBtnContainer">
                 <button class="btn active" onclick="filterSelection('all')"> Show all</button>
@@ -41,22 +43,14 @@
                 </center>
             </article>
             <article class="card filterDiv auto">
-                    <center>
-                        <img src="pictures/changeTire.jpg" alt="" />
-                        <h2>Change a Tire</h2>
-                        <hr><p>Learn how to change a tire.</p><hr>
-                        <a href="things/changeATire.html"><h2>Learn</h2></a>
-                    </center>
-                </article>
-
-            <article class="card filterDiv">
                 <center>
-                    <img src="pictures/" alt="" />
-                    <h2>Title</h2>
-                    <hr><p>Learn how to</p><hr>
-                    <a href="things/"><h2>Learn</h2></a>
+                    <img src="pictures/changeTire.jpg" alt="Change a Tire" />
+                    <h2>Change a Tire</h2>
+                    <hr><p>Learn how to change a tire.</p><hr>
+                    <a href="things/changeATire.html"><h2>Learn</h2></a>
                 </center>
             </article>
+
         </section>
 
 
@@ -68,7 +62,7 @@
                 if (c == "all") c = "";
                 for (i = 0; i < x.length; i++) {
                 w3RemoveClass(x[i], "show");
-                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "search show");
                 }
             }
             
@@ -108,7 +102,7 @@
             function myFunction() {
             var input = document.getElementById("Search");
             var filter = input.value.toLowerCase();
-            var nodes = document.getElementsByClassName('card');
+            var nodes = document.getElementsByClassName('search');
 
             for (i = 0; i < nodes.length; i++) {
                 if (nodes[i].innerText.toLowerCase().includes(filter)) {
